@@ -32,7 +32,7 @@ class Client(models.Model):
     registration_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Name: {self.name}, email: {self.email}, tel: {self.phone_number}'
+        return f'Name: {self.name}, email: {self.email}'
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
@@ -42,7 +42,10 @@ class Product(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.name
+        return f'Product: {self.name} price: {self.price}'
+    
+    def get_price(self):
+        return float(self.price)
 
 class Order(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
@@ -51,4 +54,4 @@ class Order(models.Model):
     date_ordered = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Order for {self.client} on {self.date_ordered}"
+        return f"Order for {self.client} on {self.total_price}"
