@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<ul>
+    <h2>Клиенты</h2>
+    <ul>
+    {% for client in clients %}
+    <tr>
+        <td><a href="{% url 'client_orders' client.id %}">{{ client.name }}</a>
+        </td>
+        </tr>
+    {% endfor %}
+    </ul>
+</ul>
+{% endblock %}
