@@ -1,0 +1,54 @@
+<!-- orders_template.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Заказы Клиента</title>
+</head>
+<body>
+    <h2>Заказы клиента {{client.name}}</h2>
+    <h3>Last 7 days</h3>
+    
+    <ul>
+        {% for order in orders_7_days %}
+        <li>Заказ от {{order.date_ordered}} </li>
+        <p></p>
+            <ul>
+                {% for product in order.products.all %}
+                    <li>{{ product.name }} - {{product.price}} rub. </li>
+                {% endfor %} 
+                <p>Итого: {{order.total_price}} rub. </p>
+            </ul>
+            
+        {% endfor %}
+        
+    </ul>
+
+
+    <h3>Last 30 days</h3>
+    <ul>
+        {% for order in orders_30_days %}
+        <li>Заказ от {{order.date_ordered}} </li>
+        <p></p>
+            <ul>
+                {% for product in order.products.all %}
+                    <li>{{ product.name }} - {{product.price}} rub. </li>
+                {% endfor %} 
+                <p>Итого: {{order.total_price}} rub. </p>
+            </ul>
+        {% endfor %}
+    </ul>
+    <h3>Last 365 days</h3>
+    <ul>
+        {% for order in orders_365_days %}
+        <li>Заказ от {{order.date_ordered}} </li>
+        <p></p>
+            <ul>
+                {% for product in order.products.all %}
+                    <li>{{ product.name }} - {{product.price}} rub. </li>
+                {% endfor %} 
+                <p>Итого: {{order.total_price}} rub. </p>
+            </ul>
+        {% endfor %}
+    </ul> 
+</body>
+</html>
