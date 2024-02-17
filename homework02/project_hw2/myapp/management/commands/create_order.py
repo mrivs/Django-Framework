@@ -21,12 +21,8 @@ class Command(BaseCommand):
         order = Order.objects.create(client=client, total_price=0)
         products = Product.objects.all()
         total_price = 0
-<<<<<<< HEAD
         for product_id in range(5):
             
-=======
-        for product_id in range(10):
->>>>>>> 241f2c3a5c327fb9253da92f4ca94573e05b9f40
             product = choice(products)
             order.products.add(product)
             total_price += product.price
