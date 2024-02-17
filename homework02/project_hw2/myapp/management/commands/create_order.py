@@ -17,10 +17,10 @@ class Command(BaseCommand):
 
         client = Client.objects.get(pk=client_id)
         order = Order.objects.create(client=client, total_price=0)
-
+        products = Product.objects.all()
         total_price = 0
-        for product_id in products_list:
-            product = Product.objects.get(pk=product_id)
+        for product_id in range(10):
+            product = choice(products)
             order.products.add(product)
             total_price += product.price
 
