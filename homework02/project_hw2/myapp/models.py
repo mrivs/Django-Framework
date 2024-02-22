@@ -40,12 +40,11 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     count = models.IntegerField()
     date_added = models.DateTimeField(auto_now_add=True)
-
+    photo = models.ImageField( null=True, blank=True)
+    
     def __str__(self):
         return f'Product: {self.name} price: {self.price}'
-    
-    def get_price(self):
-        return float(self.price)
+
 
 class Order(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)

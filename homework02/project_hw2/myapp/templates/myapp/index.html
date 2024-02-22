@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<button ><a href="{% url 'client_form' %}">Добавить нового клиента </a></button>
+<button ><a href="{% url 'product_form' %}">Добавить новый продукт </a></button>
+<button ><a href="{% url 'product_list' %}">Список продуктов </a></button>
 <ul>
-    <h2>Клиенты</h2>
+    <h2>Клиенты:</h2>
     <ul>
     {% for client in clients %}
     <tr>
