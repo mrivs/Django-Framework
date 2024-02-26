@@ -32,7 +32,7 @@ class Client(models.Model):
     registration_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Name: {self.name}, email: {self.email}'
+        return f'{self.name},  email: {self.email}'
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
@@ -43,7 +43,7 @@ class Product(models.Model):
     photo = models.ImageField( null=True, blank=True)
     
     def __str__(self):
-        return f'Product: {self.name} price: {self.price}'
+        return f'{self.name.upper()}'
 
 
 class Order(models.Model):
