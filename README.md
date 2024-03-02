@@ -1,2 +1,2 @@
 # Django-Framework
-homework05
+homework06
