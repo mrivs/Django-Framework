@@ -1,20 +1,17 @@
 from django.contrib import admin
 from .models import Client, Order, Product
 
-
 @admin.register(Client)
 class ClientAdmin(admin.ModelAdmin):
     list_display = ["name", "email", "phone_number", "address"]
     list_filter = ["name", "registration_date"]
     pass
 
-
 # Register your models here.
-
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    # list_display = ["name", "price", "count", "date_added", "photo"]
+    list_display = ["name", "price", "count", "date_added", "photo"]
     # list_filter = ["price", "date_added", "count"]
     readonly_fields = ['date_added']
     
@@ -43,6 +40,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ["client", "total_price", "date_ordered"]
+    list_display = ["client",'total_price', "date_ordered"]
+    readonly_fields = ['total_price']
     list_filter = ["date_ordered"]
     pass
