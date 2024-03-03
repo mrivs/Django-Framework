@@ -37,7 +37,7 @@
 
     python manage.py createsuperuser
 
-
+https://pressanybutton.ru/post/poleznye-instrumenty/razvorachivanie-django-proekta-na-pythonanywhere/
 
 
 
