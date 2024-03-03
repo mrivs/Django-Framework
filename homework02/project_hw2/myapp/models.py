@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.db.models.signals import m2m_changed
+from django.dispatch import receiver
 # Create your models here.
 '''
 Поля модели «Клиент»:
@@ -55,3 +56,8 @@ class Order(models.Model):
     def __str__(self):
         return f"Order for {self.client} on {self.total_price}"
 
+@receiver(m2m_changed, sender=Order.products.through)
+def update_total_price(sender, instance, action, **kwargs):
+        if action in ['post_add', 'post_remove', 'post_clear']:
+            instance.total_price = instance.products.aggregate(total_price=models.Sum('price'))['total_price'] or 0
+            instance.save()
