@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список продуктов</title>
+    <style>
+        .product {
+            margin-bottom: 20px;
+        }
+        .product img {
+            max-width: 200px;
+            max-height: 200px;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Список продуктов</h1>
+    {% for product in products %}
+    <div class="product">
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <p>Цена: {{ product.price }}</p>
+        <p>Количество: {{ product.count }}</p>
+        {% if product.photo %}
+            <img src="{{ product.photo.url }}" alt="{{ product.name }}">
+        {% endif %}
+    </div>
+    {% endfor %}
+    <img src="media\pizza1.webp" alt="{{ product.name }}">
+ 
+</body>
+</html>
